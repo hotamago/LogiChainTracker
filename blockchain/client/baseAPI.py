@@ -35,8 +35,8 @@ def make_response(message: str, data: any, status: str):
     }
 
 def make_response_auto_catch(lamda_call: callable):
-    return make_response("ok", lamda_call(), EnumStatus.SUCCESS)
-    # try:
-    #     return make_response("ok", lamda_call(), EnumStatus.SUCCESS)
-    # except Exception as e:
-    #     return make_response(f"Args: {e.args}\nMsg: {e}", None, EnumStatus.ERROR)
+    # return make_response("ok", lamda_call(), EnumStatus.SUCCESS)
+    try:
+        return make_response("ok", lamda_call(), EnumStatus.SUCCESS)
+    except Exception as e:
+        return make_response(f"Args: {e.args}\nMsg: {e}", None, EnumStatus.ERROR)
